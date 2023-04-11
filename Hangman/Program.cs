@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Hangman
+﻿namespace Hangman
 {
     internal class Program
     {
