@@ -14,7 +14,6 @@
         private static void StartGame()
         {
             Console.WriteLine( "Starting the game...");
-            Console.WriteLine("testing");
             AskForUsersName();
         }
 
