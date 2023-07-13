@@ -20,7 +20,18 @@
         static void AskForUsersName()
         {
             Console.WriteLine("Enter your name:");
-            userName = Console.ReadLine();
+            string input = Console.ReadLine();
+
+            if (input.Length >= 2) 
+            {
+                // The user entered a valid name
+                userName = input;
+            }
+            else
+            {
+                AskForUsersName();
+            }
+                
 
         }
         private static void PlayGame()
