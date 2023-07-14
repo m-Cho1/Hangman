@@ -44,7 +44,7 @@
 
         static void DisplayMaskedWord()
         {
-            Console.WriteLine("Displaying masked word...");
+            // displaying the masked word:
             foreach (char c in correctWord)
             {
                 Console.Write('-');
@@ -55,6 +55,7 @@
         
         static void AskForLetter()
         {
+            // ask for a letter to user:
             string input;
             do
             {
