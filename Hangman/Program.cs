@@ -4,6 +4,7 @@
     {
         static string userName;
         static int numberOfGuesses;
+        static string correctWord = "hangman";
         static void Main(string[] args)
         {
             StartGame();
@@ -44,11 +45,23 @@
         static void DisplayMaskedWord()
         {
             Console.WriteLine("Displaying masked word...");
+            foreach (char c in correctWord)
+            {
+                Console.Write('-');
+            }
+            Console.WriteLine();
+
         }
         
         static void AskForLetter()
         {
-            Console.WriteLine("Asking for letter...");
+            string input;
+            do
+            {
+                Console.WriteLine("Enter a letter:");
+                input = Console.ReadLine();
+            } while (input.Length != 1);
+            
             numberOfGuesses++;
         }
         private static void EndGame()
