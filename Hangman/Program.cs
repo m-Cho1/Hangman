@@ -3,9 +3,9 @@
     internal class Program
     {
         static string userName;
-        static int numberOfGuesses;
+        static List<char> guessedLetters = new List<char>();
         static string correctWord = "hangman";
-        static char[] letters; 
+        static char[] letters;
         // the hyphen in the letters array will be replaced with the correct word from user
         static void Main(string[] args)
         {
@@ -89,17 +89,24 @@
                 input = Console.ReadLine();
             } while (input.Length != 1);
 
-            numberOfGuesses++;
+
 
             // return the character from user input:
-            return input[0];
+            var letter = input[0];
+
+            if (!guessedLetters.Contains(letter))
+            {
+                guessedLetters.Add(letter);
+            }
+
+            return letter;
         }
         private static void EndGame()
         {
             Console.WriteLine($"The correct word: {correctWord }");
             Console.WriteLine("Game over...");
             Console.WriteLine($"Thanks for playing {userName}!");
-            Console.WriteLine($"Guesses: {numberOfGuesses}");
+            Console.WriteLine($"Guesses: {guessedLetters.Count}");
         }
     }
 }
