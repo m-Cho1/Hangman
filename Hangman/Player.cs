@@ -8,13 +8,24 @@ namespace Hangman
 {
     internal class Player
     {
-        public string userName;
-        public int score;
-        public List<char> guessedLetters = new List<char>();
+        public string UserName { get; private set; }
+        
+        private int score;
+        public int Score
+        {
+            get { return score; }
+            set 
+            { 
+                if (value > 0)
+                    score = value; 
+            }
+        }
+
+        public List<char> GuessedLetters { get; } = new List<char>();
 
         public Player(string name)
         {
-            this.userName = name;
+            this.UserName = name;
         }
     }
 }

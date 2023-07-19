@@ -66,7 +66,7 @@
                 if (guessedLetter == correctWord[i])
                 {
                     letters[i] = guessedLetter;
-                    player.score++;
+                    player.Score++;
                 }
                     
             }
@@ -100,9 +100,9 @@
 
             // if guessedLetter is not in the letter(collection),
             // then add the gussedLetter to letter:
-            if (!player.guessedLetters.Contains(letter))
+            if (!player.GuessedLetters.Contains(letter))
             {
-                player.guessedLetters.Add(letter);
+                player.GuessedLetters.Add(letter);
             }
 
             return letter;
@@ -111,8 +111,8 @@
         {
             Console.WriteLine($"The correct word: {correctWord }");
             Console.WriteLine("Game over...");
-            Console.WriteLine($"Thanks for playing {player.userName}!");
-            Console.WriteLine($"Guesses: {player.guessedLetters.Count} Score: {player.score}");
+            Console.WriteLine($"Thanks for playing {player.UserName}!");
+            Console.WriteLine($"Guesses: {player.GuessedLetters.Count} Score: {player.Score}");
         }
     }
 }
