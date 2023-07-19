@@ -2,11 +2,11 @@
 {
     internal class Program
     {
-        static string userName;
-        static List<char> guessedLetters = new List<char>();
         static string correctWord = "hangman";
         static char[] letters;
         // the hyphen in the letters array will be replaced with the correct word from user
+
+        static Player player;
         static void Main(string[] args)
         {
             StartGame();
@@ -35,7 +35,7 @@
             if (input.Length >= 2) 
             {
                 // The user entered a valid name
-                userName = input;
+                player = new Player(input);
             }
             else
             {
@@ -64,7 +64,11 @@
             for (int i = 0; i < correctWord.Length; i++)
             {
                 if (guessedLetter == correctWord[i])
+                {
                     letters[i] = guessedLetter;
+                    player.score++;
+                }
+                    
             }
         }
 
@@ -94,9 +98,11 @@
             // return the character from user input:
             var letter = input[0];
 
-            if (!guessedLetters.Contains(letter))
+            // if guessedLetter is not in the letter(collection),
+            // then add the gussedLetter to letter:
+            if (!player.guessedLetters.Contains(letter))
             {
-                guessedLetters.Add(letter);
+                player.guessedLetters.Add(letter);
             }
 
             return letter;
@@ -105,8 +111,8 @@
         {
             Console.WriteLine($"The correct word: {correctWord }");
             Console.WriteLine("Game over...");
-            Console.WriteLine($"Thanks for playing {userName}!");
-            Console.WriteLine($"Guesses: {guessedLetters.Count}");
+            Console.WriteLine($"Thanks for playing {player.userName}!");
+            Console.WriteLine($"Guesses: {player.guessedLetters.Count} Score: {player.score}");
         }
     }
 }
