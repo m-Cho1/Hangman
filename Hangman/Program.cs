@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static string correctWord = "hangman";
+        static string correctWord;
         static char[] letters;
         // the hyphen in the letters array will be replaced with the correct word from user
 
@@ -16,7 +16,10 @@
 
         private static void StartGame()
         {
-            Console.WriteLine( "Starting the game...");
+            var words = File.ReadAllLines(@"C:\Users\Minji\Desktop\hangmanWords.txt");
+
+            Random random = new Random();
+            correctWord = words[random.Next(0, words.Length)];
 
             // putting hyphens according to the correctWord length:
             letters = new char[correctWord.Length];
@@ -110,7 +113,7 @@
         private static void EndGame()
         {
             Console.WriteLine($"The correct word: {correctWord }");
-            Console.WriteLine("Game over...");
+            Console.WriteLine("Congrats!");
             Console.WriteLine($"Thanks for playing {player.UserName}!");
             Console.WriteLine($"Guesses: {player.GuessedLetters.Count} Score: {player.Score}");
         }
