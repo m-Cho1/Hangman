@@ -9,15 +9,36 @@
         static Player player;
         static void Main(string[] args)
         {
-            StartGame();
-            PlayGame();
-            EndGame();
+            // error handling in case the program goes wrong:
+            try
+            {
+                StartGame();
+                PlayGame();
+                EndGame();
+            }
+            catch
+            {
+                Console.WriteLine("Oops, something went wrong...");
+            }
+            
         }
 
         private static void StartGame()
         {
-            var words = File.ReadAllLines(@"C:\Users\Minji\Desktop\hangmanWords.txt");
+            string[] words;
+            // error handling if file path cannot be found:
+            try
+            {
+                // created a file path for words file in desktop:
+                words = File.ReadAllLines(@"C:\Users\Minji\Desktop\hangmanWords.txt");
+            }
+            catch
+            {
+                words = new string[] { "hangman", "develop", "keyboard"};
+            }
+            
 
+            // selects random word from the words file:
             Random random = new Random();
             correctWord = words[random.Next(0, words.Length)];
 
